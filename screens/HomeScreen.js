@@ -46,7 +46,7 @@ export default function HomeScreen() {
                             return(
                                 <TouchableOpacity
                                     onPress={()=> setCategory(item.id)}
-                                    style={{backgroundColor: 'rgba(0,0,0,0,0,07)'}}
+                                    style={{backgroundColor: 'rgba(0,0,0,0,07)'}}
                                     className="p-4 px-5 rounded-full mr-2 shadow"
                                 >
                                     <Text className="font-semibold">
