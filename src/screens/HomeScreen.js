@@ -28,6 +28,8 @@ export default function HomeScreen() {
         style={styles.beansBack}
       />
       <SafeAreaView style={{ flex: 1 }}>
+
+
         <View style={styles.container2}>
           <Image
             source={require("../../assets/img/avatar.png")}
@@ -37,17 +39,17 @@ export default function HomeScreen() {
             <MapPinIcon size="25" color={themeColors.bgLight} />
             <Text style={styles.city}>São Paulo, SP</Text>
           </View>
-            <BellIcon size="27" color="black" />
+          <BellIcon size="27" color="black" />
         </View>
 
-        <View style={{ margin: 10 }} className="mx-5 mt-14">
+        <View style={{ margin: 10, }}>
           <View style={styles.container4}>
             <TextInput
               placeholder="Search"
               className="p-4 flex-1 font-semibold text-gray-700"
             />
             <TouchableOpacity
-              className="rounded-full p-2"
+              className="rounded-full"
               style={{ backgroundColor: themeColors.bgLight }}
             >
               <MagnifyingGlassIcon size="25" strokeWidth={2} color="white" />
@@ -55,7 +57,7 @@ export default function HomeScreen() {
           </View>
         </View>
 
-        <View className="px-5 mt-6">
+        {/* <View className="px-5 mt-6">
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -74,7 +76,7 @@ export default function HomeScreen() {
               );
             }}
           />
-        </View>
+        </View> */}
       </SafeAreaView>
     </View>
   );
@@ -93,30 +95,29 @@ const styles = StyleSheet.create({
     position: "absolute",
   },
   avatar: {
-    height: "19%",
-    width: "12%",
+    height: 45,
+    width: 45,
     borderRadius: 100,
-    marginTop: "10%",
   },
   container2: {
-    paddingHorizontal: 4,
     flexDirection: 'row',
+    paddingHorizontal: 16,
     justifyContent: 'space-between',
     alignItems: 'center',
+    marginTop: '10%',
   },    
-  container3: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginHorizontal: "40%",
-  },
-  city: {
-    fontSize: 10,
-    fontWeight: "bold",
-  },
-  container4: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 100,
-  },
+    container3: {
+      flexDirection: "row",
+      alignItems: "center",
+    },
+    city: {
+      fontSize: 15,
+      fontWeight: "bold",
+    },
+    container4: {
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      borderRadius: 100,
+    },
 });
