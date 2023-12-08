@@ -9,12 +9,14 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@types/react-native-snap-carousel": "^3.8.9",
     "expo": "~49.0.15",
     "expo-status-bar": "~1.6.0",
     "nativewind": "^2.0.11",
     "react": "18.2.0",
     "react-native": "0.72.6",
     "react-native-heroicons": "^3.2.0",
+    "react-native-snap-carousel": "^4.0.0-beta.6",
     "react-native-svg": "^14.1.0",
     "tailwind-rn": "^4.2.0"
   },

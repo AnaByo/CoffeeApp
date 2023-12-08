@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -18,8 +18,13 @@ import {
 import { BellIcon } from "react-native-heroicons/outline";
 import { categories } from "../constants/index";
 import { themeColors } from "../../theme";
+import Carousel from 'react-native-snap-carousel';
+import CoffeeCard from "../components/Cards/index.js";
 
 export default function HomeScreen() {
+
+  const [activeCategory, setActiveCategory] = useState(1)
+
   return (
     <View style={styles.container}>
       <StatusBar />
@@ -42,41 +47,59 @@ export default function HomeScreen() {
           <BellIcon size="27" color="black" />
         </View>
 
-        <View style={{ margin: 10, }}>
+        <View style={{ marginHorizontal: 15, marginTop: 60,  }}>
           <View style={styles.container4}>
             <TextInput
               placeholder="Search"
-              className="p-4 flex-1 font-semibold text-gray-700"
+              style={styles.search}
             />
             <TouchableOpacity
-              className="rounded-full"
-              style={{ backgroundColor: themeColors.bgLight }}
+              style={styles.touchableOpacity}
             >
               <MagnifyingGlassIcon size="25" strokeWidth={2} color="white" />
             </TouchableOpacity>
           </View>
         </View>
 
-        {/* <View className="px-5 mt-6">
+        <View style={{paddingHorizontal: 15, marginTop: 10, }}>
           <FlatList
             horizontal
             showsHorizontalScrollIndicator={false}
             data={categories}
-            keyExtractor={(item) => item.id}
+            keyExtractor={item => item.id}
             className="overflow-visible"
             renderItem={({ item }) => {
+              let isActive = item.id==activeCategory;
+              let activeTextClass = isActive ? styles.activeText : styles.inactiveText;
               return (
                 <TouchableOpacity
-                  onPress={() => setCategory(item.id)}
-                  style={{ backgroundColor: "rgba(0,0,0,0,07)" }}
-                  className="p-4 px-5 rounded-full mr-2 shadow"
+                  onPress={() => setActiveCategory(item.id)}
+                  style={{backgroundColor: isActive ? themeColors.bgLight : 'rgba(0,0,0,0.07)', 
+                  padding: 17, paddingHorizontal: 20, borderRadius: 80, marginRight: 5}}
                 >
-                  <Text className="font-semibold">{item.title}</Text>
+                  <Text style={{fontWeight: 'bold'} + activeTextClass}>
+                    {item.title}
+                  </Text>
                 </TouchableOpacity>
               );
             }}
           />
-        </View> */}
+        </View >
+
+        <View style={{marginTop: 10, paddingVertical: 10,}}>
+            {/* <Carousel 
+              containerCustomStyle={{overflow: 'visible'}}
+              // data={coffeeItems}
+              renderItem={({item})=> <CoffeeCard item={item}/>}
+              firstItem={1}
+              inactiveSlideOpacity={0.75}
+              inactiveSlideScale={0.77}
+              sliderWidth={400}
+              itemWidth={260}
+              slideStyle={{display: 'flex', alignItems: 'center'}}
+            /> */}
+            <CoffeeCard/>
+          </View>
       </SafeAreaView>
     </View>
   );
@@ -118,6 +141,39 @@ const styles = StyleSheet.create({
       flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
-      borderRadius: 100,
+      borderRadius: 40,
+      backgroundColor: '#E6E6E6',
+      marginTop: 10,
+      padding: 5,
+      
     },
+    search: {
+      padding: 15,
+      flex: 1,
+      fontWeight: 'bold',
+    },
+    touchableOpacity: {
+      backgroundColor: themeColors.bgLight, 
+      borderRadius: 100, 
+      width: 50, 
+      height: 50, 
+      padding: 12,
+    },
+    touchableItem:{
+      backgroundColor: '#E6E6E6',
+      padding: 15,
+      paddingHorizontal: 15,
+      borderRadius: 100,
+      marginRight: 5,
+      marginTop: 10,
+    },
+    activeText: {
+      color: '#FFFFFF',
+    },
+    inactiveText: {
+      color: '#A9A9A9', 
+    }
+
+    // className="p-4 px-5 rounded-full mr-2 shadow"
+
 });
