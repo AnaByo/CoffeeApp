@@ -1,25 +1,3 @@
-export const categories = [
-    {
-        id: 1,
-        title: "Americano",
-    },
-    {
-        id: 2,
-        title: "Cappucino",
-    },
-    {
-        id: 3,
-        title: "Expresso",
-    },
-    {
-        id: 4,
-        title: "Latte",
-    },
-    {
-        id: 5,
-        title: "Mocha",
-    },
-]
 
 export const coffeeItems = [
     {
