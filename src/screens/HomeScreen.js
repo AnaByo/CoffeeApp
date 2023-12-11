@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -23,7 +23,24 @@ import CoffeeCard from "../components/Cards/index.js";
 
 export default function HomeScreen() {
   const [activeCategory, setActiveCategory] = useState(1);
+  const [search, setSearch] = useState('');
+  const [list, setList] = useState(coffeeItems);
 
+  useEffect(()=> {
+    if (search === '') {
+      setList(coffeeItems);
+    } else {
+      setList(
+        coffeeItems.filter(
+          (item) => 
+          item.name.toLowerCase().indexOf(search.toLowerCase()) > -1
+        )
+      );
+    }
+  }, [search]);
+
+  // const handleOrderClick = useState = () => {};
+  
   return (
     <View style={styles.container}>
       <StatusBar />
@@ -46,7 +63,9 @@ export default function HomeScreen() {
 
         <View style={{ marginHorizontal: 15, marginTop: 60 }}>
           <View style={styles.container4}>
-            <TextInput placeholder="Search" style={styles.search} />
+            <TextInput placeholder="Search" style={styles.searchStyles} 
+            value={search}
+            onChangeText={(t) => setSearch(t)}/>
             <TouchableOpacity style={styles.touchableOpacity}>
               <MagnifyingGlassIcon size="25" strokeWidth={2} color="white" />
             </TouchableOpacity>
@@ -147,7 +166,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     padding: 5,
   },
-  search: {
+  searchStyles: {
     padding: 15,
     flex: 1,
     fontWeight: "bold",

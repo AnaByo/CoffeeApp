@@ -2,8 +2,7 @@ import React from 'react'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
-import { Dimensions, LogBox, Platform, Text, View, StyleSheet } from 'react-native';
-// import ProductScreen from '../screens/ProductScreen';
+import { LogBox, View, StyleSheet } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {HomeIcon as HomeOutline, HeartIcon as HeartOutline, ShoppingBagIcon as BagOutline } from 'react-native-heroicons/outline';
 import {HomeIcon as HomeSolid, HeartIcon as HeartSolid, ShoppingBagIcon as BagSolid} from 'react-native-heroicons/solid';
@@ -21,10 +20,10 @@ LogBox.ignoreLogs([
 export default function AppNavigation(){
     return(
         <NavigationContainer>
-            <Stack.Navigator screenOptions={{
+            <Stack.Navigator initialRouteName="HomeScreen" screenOptions={{
                     contentStyle: {backgroundColor: 'white'}
                 }}>
-                <Stack.Screen name="Home" options={{headerShown: false}} component={HomeTabs}/>
+                <Stack.Screen name="HomeScreen" options={{headerShown: false}} component={HomeTabs}/>
                 <Stack.Screen name="Product" options={{headerShown: false}} component={ProductScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
